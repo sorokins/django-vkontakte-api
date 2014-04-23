@@ -425,6 +425,8 @@ class VkontakteCRUDModel(models.Model):
                 self.create_remote(**kwargs)
             elif self.pk and self.fields_changed:
                 self.update_remote(**kwargs)
+        if 'from_group' in kwargs:
+            kwargs.pop('from_group')
         super(VkontakteCRUDModel, self).save(*args, **kwargs)
 
     def create_remote(self, **kwargs):
